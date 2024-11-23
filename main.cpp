@@ -37,8 +37,6 @@ MemoryUsage getMemoryUsage() {
 
 int main() {
     Grafo grafo;
-    Grafo grafo2;
-
 
     // Criando vértices do grafo para representar o labirinto
     int a = grafo.adicionarVertice('A');
@@ -95,25 +93,17 @@ int main() {
     grafo.adicionarAresta(x, v);
     grafo.adicionarAresta(v, u);
 
-    char inicio = 'A';
+    char inicio = 'U';
     char fim = 'E';
     cout<<"Grafo 1"<<endl;
     grafo.imprimirGrafo();
 
 
-
- // BFS 
+    // BFS 
     cout << endl << "Algoritmo de busca em largura:" << endl;
     char* caminho = new char[grafo.getNumVertices()];
     int tamCaminho;
 
-    // Force some memory allocation to measure
-    volatile char* temp = new char[1024 * 1024];
-    for(int i = 0; i < 1024 * 1024; i++) {
-        temp[i] = 'x';
-    }
-
-    MemoryUsage memBefore = getMemoryUsage();
     auto startTime = chrono::high_resolution_clock::now();
 
     if (buscaLargura(grafo, inicio, fim, caminho, tamCaminho)) {
@@ -127,27 +117,17 @@ int main() {
     }
 
     auto endTime = chrono::high_resolution_clock::now();
-    MemoryUsage memAfter = getMemoryUsage();
-    delete[] temp;
-
     auto duration = chrono::duration_cast<chrono::microseconds>(endTime - startTime);
     cout << "Tempo de execução BFS: " << duration.count() << " microsegundos" << endl;
-    cout << "Uso de memória residente BFS: " << (memAfter.resident - memBefore.resident) / 1024.0 << " KB" << endl;
-    cout << "Uso de memória virtual BFS: " << (memAfter.vm_size - memBefore.vm_size) / 1024.0 << " KB" << endl;
 
     delete[] caminho;
+
 
     // DFS 
     cout << endl << "Algoritmo de busca em profundidade:" << endl;
     caminho = new char[grafo.getNumVertices()];
     tamCaminho = 0;
 
-    temp = new char[1024 * 1024];
-    for(int i = 0; i < 1024 * 1024; i++) {
-        temp[i] = 'x';
-    }
-
-    memBefore = getMemoryUsage();
     startTime = chrono::high_resolution_clock::now();
 
     if (buscaProfundidade(grafo, inicio, fim, caminho, tamCaminho)) {
@@ -161,46 +141,10 @@ int main() {
     }
 
     endTime = chrono::high_resolution_clock::now();
-    memAfter = getMemoryUsage();
-    delete[] temp;
-
     duration = chrono::duration_cast<chrono::microseconds>(endTime - startTime);
     cout << "Tempo de execução DFS: " << duration.count() << " microsegundos" << endl;
-   cout << "Uso de memória residente DFS: " << (memAfter.resident - memBefore.resident) / 1024.0 << " KB" << endl;
-    cout << "Uso de memória virtual DFS: " << (memAfter.vm_size - memBefore.vm_size) / 1024.0 << " KB" << endl;
 
     delete[] caminho;
-    return 0;
-
-    /* // Adiciona alguns vértices e guarda seus IDs
-    int v1 = grafo2.adicionarVertice('1');
-    int v2 = grafo2.adicionarVertice('2');
-    int v3 = grafo2.adicionarVertice('3');
-    int v4 = grafo2.adicionarVertice('4');
-
-    
-    // Adiciona algumas arestas
-    grafo2.adicionarAresta(v1, v2);
-    grafo2.adicionarAresta(v1, v3);
-    grafo2.adicionarAresta(v2, v3);
-    grafo2.adicionarAresta(v3, v4);
-    
-    std::cout << "Grafo inicial:" << std::endl;
-    grafo2.imprimirGrafo();
-    
-    // Adiciona mais um vértice
-    int v5 = grafo.adicionarVertice('5');
-    grafo2.adicionarAresta(v1, v5);
-    grafo2.adicionarAresta(v4, v5);
-    
-    std::cout << "\nGrafo após adicionar um vértice:" << std::endl;
-    grafo2.imprimirGrafo();
-    
-    // Remove um vértice
-    grafo2.removerVertice(v3);
-    
-    std::cout << "\nGrafo após remover o vértice " << v3 << ":" << std::endl;
-    grafo2.imprimirGrafo(); */
     
     return 0;
 }
