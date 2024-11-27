@@ -3,37 +3,11 @@
 #include "dfs.hpp"
 #include <chrono>
 #include <sys/time.h>
-#include <sys/resource.h>
 #include <unistd.h>
 #include <fstream>
 
 
 using namespace std;
-
-// Function to get memory usage in Linux gpt que mandou
-struct MemoryUsage {
-    size_t vm_size;    // Changed from rss
-    size_t resident;   // Changed from virtual_mem
-};
-
-MemoryUsage getMemoryUsage() {
-    MemoryUsage usage;
-    ifstream statm("/proc/self/statm");
-    
-    if (statm.is_open()) {
-        size_t page_size = 4096; // Standard page size on most Linux systems
-        size_t vm, resident;
-        statm >> vm >> resident;
-        usage.vm_size = vm * page_size;
-        usage.resident = resident * page_size;
-    } else {
-        usage.vm_size = 0;
-        usage.resident = 0;
-    }
-    
-    return usage;
-}
-
 
 int main() {
     Grafo grafo;

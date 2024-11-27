@@ -2,12 +2,14 @@
 #include "dfs.hpp"
 using namespace std;
 
-Pilha::Pilha() : topo(nullptr) {}
+Pilha::Pilha() : topo(nullptr),tamanho(0),tamanhoMax(0) {}
 
 void Pilha::empilhar(char valor) {
     No* novo = new No(valor);
     novo->proximo = topo;
     topo = novo;
+    tamanho++;
+    if(tamanho >= tamanhoMax) tamanhoMax = tamanho;
 }
 
 char Pilha::desempilhar() {
@@ -17,7 +19,12 @@ char Pilha::desempilhar() {
     No* temp = topo;
     topo = topo->proximo;
     delete temp;
+    tamanho--;
     return valor;
+}
+
+int Pilha::getMaiorTamanho() {
+    return tamanhoMax;
 }
 
 bool Pilha::vazia() const {
@@ -30,6 +37,10 @@ Pilha::~Pilha() {
         topo = topo->proximo;
         delete temp;
     }
+}
+
+size_t Pilha::getTotalMemoryUsage() const {
+    return tamanhoMax * sizeof(No);
 }
 
 bool buscaProfundidade(Grafo& grafo, char inicio, char fim, char* caminho, int& tamCaminho) {
@@ -86,6 +97,8 @@ bool buscaProfundidade(Grafo& grafo, char inicio, char fim, char* caminho, int& 
     }else{
         cout<<"Caminho não encontrado"<<iteracoes<< " iterações"<<endl;
     }
+    cout<<"Maior tamanho da pilha: "<<pilha.getMaiorTamanho()<<" nós."<<endl;
+    cout<<"Memória utilizada pela pilha: "<<pilha.getTotalMemoryUsage()<<" bytes."<<endl;
     
     delete[] visitado;
     delete[] pai;

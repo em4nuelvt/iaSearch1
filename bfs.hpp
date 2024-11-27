@@ -10,7 +10,8 @@ private:
         No* proximo;
         No(char v) : valor(v), proximo(nullptr) {}
     };
-    
+    int tamanho;
+    int tamanhoMax;
     No *frente, *tras;
 
 public:
@@ -19,6 +20,8 @@ public:
     char remover();
     bool vazia() const;
     ~Fila();
+    int getMaiorTamanho();
+    size_t getTotalMemoryUsage() const;
 };
 
 bool buscaLargura(Grafo& grafo, char inicio, char fim, char* caminho, int& tamCaminho);

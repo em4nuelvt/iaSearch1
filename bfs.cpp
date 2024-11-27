@@ -1,7 +1,7 @@
 #include "bfs.hpp"
 using namespace std;
 
-Fila::Fila() : frente(nullptr), tras(nullptr) {}
+Fila::Fila() : frente(nullptr), tras(nullptr),tamanho(0),tamanhoMax(0) {}
 
 void Fila::inserir(char valor) {
     No* novo = new No(valor);
@@ -11,6 +11,8 @@ void Fila::inserir(char valor) {
         tras->proximo = novo;
         tras = novo;
     }
+    tamanho++;
+    if(tamanho >= tamanhoMax) tamanhoMax = tamanho;
 }
 
 char Fila::remover() {
@@ -23,7 +25,12 @@ char Fila::remover() {
     if (frente == nullptr) tras = nullptr;
     
     delete temp;
+    tamanho--;
     return valor;
+}
+
+int Fila::getMaiorTamanho(){
+    return tamanhoMax;
 }
 
 bool Fila::vazia() const {
@@ -37,6 +44,10 @@ Fila::~Fila() {
         delete temp;
     }
     tras = nullptr;
+}
+
+size_t Fila::getTotalMemoryUsage() const {
+    return tamanhoMax * sizeof(No);
 }
 
 bool buscaLargura(Grafo& grafo, char inicio, char fim, char* caminho, int& tamCaminho) {
@@ -93,6 +104,8 @@ bool buscaLargura(Grafo& grafo, char inicio, char fim, char* caminho, int& tamCa
     }else{
         cout<<"Caminho não encontrado. "<<iteracoes<<" iterações."<<endl;
     }
+    cout<<"Maior tamanho da fila: "<<fila.getMaiorTamanho()<<" nós."<<endl;
+    cout<<"Memória utilizada pela fila: "<<fila.getTotalMemoryUsage()<<" bytes."<<endl;
     
     delete[] visitado;
     delete[] pai;
