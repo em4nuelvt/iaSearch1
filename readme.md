@@ -121,7 +121,7 @@ O grafo, a pilha e a fila foram implementados manualmente, sem utilizar bibliote
 
 
 ### Observações Encontradas
-- **Optimalidade**: O caminho encontrado é o melhor/menor caminho de fato do tabuleiro para ambos os algoritmos.
+- **Optimalidade**: O caminho encontrado é o melhor/menor caminho, de fato, do labirinto para ambos os algoritmos.
 - **Tempo de Execução**: O tempo de execução do DFS foi menor que o tempo de execução do BFS em média. Tanto em tempo, quanto em número de iterações.
 - **Consumo de Memória**: A pilha do DFS ocupou mais memória do que a fila do BFS pois armazenou mais nós durante a execução.
 - **Completude**: Ambos os algoritmos sempre encontraram solução para a disposição do tabuleiro apresentado.
@@ -146,6 +146,18 @@ O grafo, a pilha e a fila foram implementados manualmente, sem utilizar bibliote
 ### Conclusão 
 Portanto, a partir da modelagem do labirinto em um grafo, aplicou-se os algoritmos de busca em largura (BFS) e busca em profundidade(DFS). Analisando os resultados foi possível identificar que o DFS apresentou melhor desempenho em termos de tempo de execução, enquanto BFS foi mais eficiente em termos de consumo de memória. Dessa forma, embora o labirinto utilizado como testes seja relativamente pequeno, observou-se características importantes ao comparar os algoritmos. 
 
+---
+
+# Compilação e Execução
+
+O projeto possui um arquivo Makefile que realiza todo o procedimento de compilação e execução. Para tanto, temos as seguintes diretrizes de execução:
+
+
+| Comando                |  Função                                                                                           |                     
+| -----------------------| ------------------------------------------------------------------------------------------------- |
+|  `make clean`          | Apaga a última compilação realizada contida na pasta build                                        |
+|  `make`                | Executa a compilação do programa utilizando o gcc, e o resultado vai para a pasta build           |
+|  `make run`            | Executa o programa da pasta build após a realização da compilação                                 |
 
 ---
 Autores: Anielly Gonçalves e Emanuel Vieira Tavares.
