@@ -66,7 +66,7 @@ A Busca em Profundidade (DFS) é um algoritmo de busca não informada que explor
 
 ## Consumo de Memória
 - A quantidade de memória utilizada durante a execução dos algoritmos.
-- Para calcular o consumo de memória foi adicionado na estrutura que define o nó da fila/pilha uma variável que conta o maior número de elementos presentes na estrutura. Assim, é possível analisar o maior "tamanho" que cada estrutura ocupou em memória.
+- Para calcular o consumo de memória, foi adicionado na estrutura que define a fila/pilha uma variável que conta o maior número de nós presentes na estrutura. Assim, é possível analisar o maior "tamanho" que cada estrutura ocupou em memória durante a execução da busca.
 
 ## Completude
 - Verificar se o algoritmo sempre encontra uma solução (quando existir).
@@ -154,30 +154,30 @@ A Busca em Profundidade (DFS) é um algoritmo de busca não informada que explor
 
 
 ## Observações Encontradas
-- **Optimalidade**: O caminho encontrado é o melhor/menor caminho, de fato, do labirinto para ambos os algoritmos.
+- **Optimalidade**: O caminho encontrado é de fato é o melhor/menor caminho para a configuração disposta no labirinto em ambos os algoritmos.
 - **Tempo de Execução**: O tempo de execução do DFS foi menor que o tempo de execução do BFS em média. Tanto em tempo, quanto em número de iterações.
 - **Consumo de Memória**: A pilha do DFS ocupou mais memória do que a fila do BFS pois armazenou mais nós durante a execução.
 - **Completude**: Ambos os algoritmos sempre encontraram solução para a disposição do tabuleiro apresentado.
 
 
-## Resultados das Medições de Desempenho
+## Resultados de Testes e Medições de Desempenho
 - **BFS**:
   - Tempo de execução variou entre 8 e 25 microsegundos.
-  - Memória utilizada variou entre 48 bytes.
+  - Memória utilizada em torno de 48 bytes.
   - Número de iterações: 23.
 - **DFS**:
   - Tempo de execução variou entre 4 e 15 microsegundos.
-  - Memória utilizada variou entre 80 bytes.
+  - Memória utilizada em torno de 80 bytes.
   - Número de iterações: 13.
 
 ## Análise Comparativa dos Algoritmos
-- **Tempo de Execução**: DFS foi consistentemente mais rápido que BFS.
+- **Tempo de Execução**: DFS foi consistentemente mais rápido que BFS nos testes realizados.
 - **Consumo de Memória**: BFS utilizou menos memória que DFS.
 - **Completude**: Ambos os algoritmos são completos.
 - **Optimalidade**: Ambos os algoritmos encontraram o menor caminho.
 
 # Conclusão 
-Portanto, a partir da modelagem do labirinto em um grafo, aplicou-se os algoritmos de busca em largura (BFS) e busca em profundidade(DFS). Analisando os resultados foi possível identificar que o DFS apresentou melhor desempenho em termos de tempo de execução, enquanto BFS foi mais eficiente em termos de consumo de memória. Dessa forma, embora o labirinto utilizado como testes seja relativamente pequeno, observou-se características importantes ao comparar os algoritmos. 
+Portanto, a partir da modelagem do labirinto em um grafo, aplicou-se os algoritmos de busca em largura (BFS) e busca em profundidade(DFS). Analisando os resultados foi possível identificar que o DFS apresentou melhor desempenho em termos de tempo de execução, enquanto BFS foi mais eficiente em termos de consumo de memória. Dessa forma, embora o labirinto utilizado como testes seja relativamente pequeno, observou-se essas características importantes ao comparar o comportamento dos algoritmos. 
 
 ---
 
