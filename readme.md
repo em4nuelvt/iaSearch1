@@ -176,6 +176,30 @@ A Busca em Profundidade (DFS) é um algoritmo de busca não informada que explor
 - **Completude**: Ambos os algoritmos são completos.
 - **Optimalidade**: Ambos os algoritmos encontraram o menor caminho.
 
+### Razões para o Comportamento Observado
+Na configuração do labirinto desse problema, observou-se que o resultado da comparação dos algoritmos divergiu da teoria por trás dos dois, em que geralmente o DFS consome menos memória que o BFS, porém essa diferença pode ser justificada através das seguintes análises:
+
+1. **Estrutura do Grafo e Labirinto**:
+   - O grafo representa um labirinto 5x5 com conexões específicas e pontos de partida especificados. Como é um conjunto de dados relativamente pequeno, a busca tende a ser "menos exploratória".
+   - A disposição dos caminhos no labirinto influencia significativamente o comportamento dos algoritmos de busca.
+
+2. **BFS (Busca em Largura)**:
+   - Explora todos os vizinhos de um nó antes de avançar para o próximo nível.
+   - Em um labirinto com muitos caminhos curtos e conexões diretas, o BFS pode encontrar o caminho rapidamente e com menos memória, pois não precisa explorar profundamente antes de encontrar o objetivo.
+
+3. **DFS (Busca em Profundidade)**:
+   - Explora o mais fundo possível em cada ramo antes de retroceder.
+   - Nesse labirinto relativamente menor, o DFS pode acabar explorando nós profundamente antes de encontrar o caminho correto, resultando em maior uso de memória quando comparado ao BFS. Como o DFS explora profundamente um caminho que não leva à meta, ocorre o que foi observado: uma pilha de execução maior em relação a fila de execução do BFS, o que tem relação direta com o relativo maior uso de memória para esse problema. 
+
+### Exemplos de Comportamentos Para Diferentes Configurações de Labirinto
+- **Labirinto com Caminhos Curtos e Diretos**:
+  - O BFS pode encontrar o caminho rapidamente com menos memória, pois explora todos os vizinhos de um nó antes de avançar.
+  - O DFS pode acabar explorando muitos caminhos errados profundamente antes de encontrar o caminho correto, resultando em maior uso de memória.
+
+- **Labirinto com Caminhos Longos e Ramificados**:
+  - O DFS pode explorar um caminho até o fim antes de retroceder, resultando em menor uso de memória.
+  - O BFS pode precisar explorar muitos nós em cada nível, resultando em maior uso de memória.
+
 # Conclusão 
 Portanto, a partir da modelagem do labirinto em um grafo, aplicou-se os algoritmos de busca em largura (BFS) e busca em profundidade(DFS). Analisando os resultados foi possível identificar que o DFS apresentou melhor desempenho em termos de tempo de execução, enquanto BFS foi mais eficiente em termos de consumo de memória. Dessa forma, embora o labirinto utilizado como testes seja relativamente pequeno, observou-se essas características importantes ao comparar o comportamento dos algoritmos. 
 
