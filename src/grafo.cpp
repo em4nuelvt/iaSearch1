@@ -1,6 +1,5 @@
 #include <iostream>
 #include "grafo.hpp"
-// Estrutura para o nó da lista de adjacência
 
 AdjNode::AdjNode(int v, char nome) {
     vertice = v;
@@ -8,7 +7,6 @@ AdjNode::AdjNode(int v, char nome) {
     proximo = nullptr;
 }
 
-// VerticeNode constructor implementation
 VerticeNode::VerticeNode(int identificador, char nome) {
     id = identificador;
     listaAdj = nullptr;
@@ -16,13 +14,12 @@ VerticeNode::VerticeNode(int identificador, char nome) {
     this->nome = nome;
 }
 
-// Grafo methods implementation
+// construtor, incializar na main
 Grafo::Grafo() {
     vertices = nullptr;
     numVertices = 0;
     proximoId = 0;
 }
-
 
 VerticeNode* Grafo::encontrarVertice(int id) {
     VerticeNode* atual = vertices;
@@ -89,7 +86,7 @@ bool Grafo::removerVertice(int id) {
     return true;
 }
 
-// Adiciona uma aresta entre dois vértices
+// add aresta entre dois vértices
 bool Grafo::adicionarAresta(int origem, int destino) {
     VerticeNode* verticeOrigem = encontrarVertice(origem);
     VerticeNode* verticeDestino = encontrarVertice(destino);
@@ -98,19 +95,19 @@ bool Grafo::adicionarAresta(int origem, int destino) {
         return false;
     }
     
-    // Adiciona aresta origem -> destino
+    //  origem -> destino
     AdjNode* novaAdj = new AdjNode(destino, verticeDestino->nome);
     novaAdj->proximo = verticeOrigem->listaAdj;
     verticeOrigem->listaAdj = novaAdj;
     
-    // Adiciona aresta destino -> origem (para tornar não direcionado)
+    // destino -> origem (não direcionado)
     AdjNode* novaAdjInversa = new AdjNode(origem, verticeOrigem->nome);
     novaAdjInversa->proximo = verticeDestino->listaAdj;
     verticeDestino->listaAdj = novaAdjInversa;
     
     return true;
 }
-// Remove uma aresta entre dois vértices
+
 bool Grafo::removerAresta(int origem, int destino) {
     VerticeNode* verticeOrigem = encontrarVertice(origem);
     if (verticeOrigem == nullptr) return false;
@@ -135,7 +132,6 @@ bool Grafo::removerAresta(int origem, int destino) {
     return true;
 }
 
-// Imprime o grafo
 void Grafo::imprimirGrafo() {
     VerticeNode* v = vertices;
     while (v != nullptr) {
@@ -152,7 +148,6 @@ void Grafo::imprimirGrafo() {
     }
 }
 
-// Retorna o número atual de vértices
 int Grafo::getNumVertices() {
     return numVertices;
 }
@@ -165,13 +160,12 @@ AdjNode* Grafo::getAdjList(char nome) {
     return nullptr;
 }
 
-// Destrutor
 Grafo::~Grafo() {
     while (vertices != nullptr) {
         VerticeNode* verticeAtual = vertices;
         vertices = vertices->proximo;
         
-        // Libera a memória das arestas
+        // libera a memória das arestas
         AdjNode* adj = verticeAtual->listaAdj;
         while (adj != nullptr) {
             AdjNode* proxAdj = adj->proximo;

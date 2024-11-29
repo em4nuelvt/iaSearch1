@@ -39,7 +39,7 @@ int main() {
     int y = grafo.adicionarVertice('Y');
     int z = grafo.adicionarVertice('Z');    
     
-    // adicionando arestas
+    // adicionando as arestas (associação de caminhos do labirinto)
     grafo.adicionarAresta(a, b);
     grafo.adicionarAresta(a, f);
     grafo.adicionarAresta(b, a);
