@@ -25,8 +25,39 @@ O grafo, a pilha e a fila foram implementados manualmente, sem utilizar bibliote
 
 
 ## Descrição dos Algoritmos Implementados
-- **BFS (Busca em Largura)**: Explora todos os vizinhos de um nó antes de avançar para o próximo nível de nós, gerenciando elementos com uma fila.
-- **DFS (Busca em Profundidade)**: Explora o mais fundo possível em cada ramo antes de retroceder gerenciando elementos com uma pilha.
+### BFS (Busca em Largura)
+A Busca em Largura (BFS) é um algoritmo de busca não informada que explora todos os vizinhos de um nó antes de avançar para o próximo nível de nós. No contexto do problema do labirinto, o BFS é utilizado para encontrar o caminho mais curto entre dois pontos (nós) do grafo que representa o labirinto.
+
+- **Funcionamento**:
+  1. **Inicialização**: O algoritmo começa no nó inicial (ponto de partida) e insere este nó em uma fila.
+  2. **Exploração**: Em cada iteração, o nó na frente da fila é removido e todos os seus vizinhos não visitados são adicionados à fila.
+  3. **Marcação**: Cada nó visitado é marcado para evitar visitas repetidas.
+  4. **Terminação**: O algoritmo termina quando o nó objetivo (ponto de chegada) é encontrado ou quando todos os nós acessíveis foram explorados.
+
+- **Vantagens**:
+  - **Completude**: O BFS sempre encontra uma solução se uma solução existir.
+  - **Optimalidade**: O BFS garante encontrar o caminho mais curto em termos de número de arestas (passos) no grafo.
+
+- **Desvantagens**:
+  - **Consumo de Memória**: O BFS pode consumir muita memória, especialmente em grafos grandes, pois mantém todos os nós do nível atual na fila.
+
+### DFS (Busca em Profundidade)
+A Busca em Profundidade (DFS) é um algoritmo de busca não informada que explora o mais fundo possível em cada ramo antes de retroceder. No contexto do problema do labirinto, o DFS é utilizado para explorar todos os caminhos possíveis entre dois pontos do grafo.
+
+- **Funcionamento**:
+  1. **Inicialização**: O algoritmo começa no nó inicial (ponto de partida) e insere este nó em uma pilha.
+  2. **Exploração**: Em cada iteração, o nó no topo da pilha é removido e todos os seus vizinhos não visitados são adicionados à pilha.
+  3. **Marcação**: Cada nó visitado é marcado para evitar visitas repetidas.
+  4. **Terminação**: O algoritmo termina quando o nó objetivo (ponto de chegada) é encontrado ou quando todos os nós acessíveis foram explorados.
+
+- **Vantagens**:
+  - **Consumo de Memória**: O DFS geralmente consome menos memória do que o BFS, pois não precisa armazenar todos os nós de um nível.
+  - **Implementação Simples**: O DFS é fácil de implementar usando recursão ou uma pilha explícita.
+
+- **Desvantagens**:
+  - **Completude**: O DFS pode não encontrar uma solução em grafos com ciclos infinitos ou muito profundos.
+  - **Optimalidade**: O DFS não garante encontrar o caminho mais curto.
+
 
 #  Medições de Desempenho
 ## Tempo de Execução
