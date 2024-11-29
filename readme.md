@@ -132,11 +132,11 @@ O grafo, a pilha e a fila foram implementados manualmente, sem utilizar bibliote
 ## Resultados das Medições de Desempenho
 - **BFS**:
   - Tempo de execução variou entre 8 e 25 microsegundos.
-  - Memória utilizada variou entre 48 bytes.
+  - Memória utilizada em torno de 48 bytes.
   - Número de iterações: 23.
 - **DFS**:
   - Tempo de execução variou entre 4 e 15 microsegundos.
-  - Memória utilizada variou entre 80 bytes.
+  - Memória utilizada em torno de 80 bytes.
   - Número de iterações: 13.
 
 ## Análise Comparativa dos Algoritmos
