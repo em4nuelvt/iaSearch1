@@ -201,7 +201,12 @@ Na configuração do labirinto desse problema, observou-se que o resultado da co
   - O BFS pode precisar explorar muitos nós em cada nível, resultando em maior uso de memória.
 
 # Conclusão 
-Portanto, a partir da modelagem do labirinto em um grafo, aplicou-se os algoritmos de busca em largura (BFS) e busca em profundidade(DFS). Analisando os resultados foi possível identificar que o DFS apresentou melhor desempenho em termos de tempo de execução, enquanto BFS foi mais eficiente em termos de consumo de memória. Dessa forma, embora o labirinto utilizado como testes seja relativamente pequeno, observou-se essas características importantes ao comparar o comportamento dos algoritmos. 
+Portanto, a partir da modelagem do labirinto em um grafo, aplicou-se os algoritmos de busca em largura (BFS) e busca em profundidade(DFS). Analisando os resultados foi possível identificar que o DFS apresentou melhor desempenho em termos de tempo de execução, enquanto BFS foi mais eficiente em termos de consumo de memória.
+
+Dessa forma, embora o labirinto utilizado como testes seja relativamente pequeno, a análise reforça a importância de considerar não apenas as características teóricas dos algoritmos, mas também a estrutura específica do problema ao escolher uma estratégia de busca. Em aplicações práticas, a decisão entre BFS e DFS deve levar em conta fatores como o tamanho do espaço de busca, restrições de memória, requisitos de tempo de execução e a necessidade de garantir a otimalidade da solução.
+
+
+
 
 ---
 
